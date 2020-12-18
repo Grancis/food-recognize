@@ -20,5 +20,5 @@ def validate(model, validate_loader, epoch):
             validate_recorder(tuple(record), header=True)
         else:
             validate_recorder(tuple(record))
-        print('Val-Epoch: '+ epoch +'\tStep: '+ step + '\tLoss' + loss.item() +'\n' )
+        print('Epoch: '+ str(epoch) +'\tStep: '+ str(step) + '\tLoss' + str(loss.item()) +'\n' )
         record = []

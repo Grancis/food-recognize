@@ -16,8 +16,8 @@ def get_loader(data_info_file: str, data_root:str, transform=None):
     img_list = get_image_list(os.path.join(config.PROJECT_ROOT, data_info_file))
     if transform is None:
         transform = transforms.Compose([
-            transforms.Resize(400),
-            transforms.CenterCrop(400),
+            transforms.Resize(32),
+            transforms.CenterCrop(32),
             transforms.ToTensor(),
             transforms.Normalize(mean=[.4, .4, .4], std=[.2, .2, .2])
         ])

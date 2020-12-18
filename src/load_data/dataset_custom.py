@@ -1,6 +1,8 @@
 import torch.utils.data as data
 from PIL import Image
+import torch
 import os
+from torch.autograd import Variable
 
 class DatasetCustom(data.Dataset):
     '''
@@ -25,7 +27,8 @@ class DatasetCustom(data.Dataset):
         img = Image.open(img_path)
         if not self.tranform is None:
             img = self.tranform(img)
-        return img, label
+        img = Variable(torch.unsqueeze(img, dim=0).float(), requires_grad=False)
+        return img, torch.tensor([label])
 
     def __len__(self):
         return (len(self.image_list))

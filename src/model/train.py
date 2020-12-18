@@ -20,6 +20,7 @@ def train_model():
     for epoch in range(config.EPOCHS):
         for step, (x, y) in enumerate(train_loader):
             x, y = x.to(DEVICE), y.to(DEVICE)
+            # print(x)
             output = net(x)
             # 使用最大似然 / log似然代价函数
             loss = F.nll_loss(output, y)
@@ -35,7 +36,7 @@ def train_model():
                     train_recorder(tuple(record), header=True)
                 else:
                     train_recorder(tuple(record))
-                print('Epoch: '+ epoch +'\tStep: '+ step + '\tLoss' + loss.item() +'\n' )
+                print('Val-Epoch: '+ str(epoch) +'\tStep: '+ str(step) + '\tLoss: ' + str(loss.item()) +'\n' )
                 record = []
         # 验证集验证
         validate(net, val_loader, epoch)

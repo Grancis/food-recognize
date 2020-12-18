@@ -10,7 +10,7 @@ def train_recorder(record_list:tuple, header=False):
         if header:
             record_f.write('Epoch\tstep\tloss\n')
         for record in record_list:
-            record_f.write(str(record[0])+'\t'+str(record[1]+'\t'+record[2]+'\n'))
+            record_f.write(str(record[0])+'\t'+str(record[1])+'\t'+str(record[2])+'\n')
     except IOError:
         record_f.close()
         raise
