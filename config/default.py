@@ -9,6 +9,8 @@ PROJECT_ROOT = os.path.abspath(
 DATA_TRAIN_ROOT = os.path.join(PROJECT_ROOT, 'data/train')
 DATA_TEST_ROOT = os.path.join(PROJECT_ROOT, 'data/test')
 MODEL_ROOT = os.path.join(PROJECT_ROOT, 'data/model')
+RECORD_TRAIN_PATH = os.path.join(PROJECT_ROOT, 'data/train_record.txt')
+RECORD_VALIDATE_PATH = os.path.join(PROJECT_ROOT, 'data/validate_record.txt')
 MODEL_DEFAULT = "retrain.pkl"
 
 LABEL_VALUE = {
