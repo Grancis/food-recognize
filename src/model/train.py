@@ -36,7 +36,10 @@ def train_model():
                     train_recorder(tuple(record), header=True)
                 else:
                     train_recorder(tuple(record))
-                print('Val-Epoch: '+ str(epoch) +'\tStep: '+ str(step) + '\tLoss: ' + str(loss.item()) +'\n' )
+                print('Epoch: '+ str(epoch) +'\tStep: '+ str(step) + '\tLoss: ' + str(loss.item()) +'\n' )
                 record = []
         # 验证集验证
         validate(net, val_loader, epoch)
+    # 保存模型
+    torch.save(net.state_dict(), os.path.join(config.MODEL_ROOT, config.MODEL_DEFAULT))
+    return net
