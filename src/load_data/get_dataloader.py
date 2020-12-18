@@ -5,7 +5,7 @@ from .image_list import get_image_list
 from .dataset_custom import DatasetCustom
 import os
 
-def get_loader(data_info_file: str, transform=None):
+def get_loader(data_info_file: str, data_root:str, transform=None):
     '''
     @params
     data_info_file: 文本文件（.txt等）的相对路径
@@ -21,5 +21,5 @@ def get_loader(data_info_file: str, transform=None):
             transforms.ToTensor(),
             transforms.Normalize(mean=[.4, .4, .4], std=[.2, .2, .2])
         ])
-    dataset = DatasetCustom(config.PROJECT_ROOT, img_list, transform = transform)
+    dataset = DatasetCustom(os.path.join(config.PROJECT_ROOT, data_root), img_list, transform = transform)
     return dataset

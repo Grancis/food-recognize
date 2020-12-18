@@ -7,6 +7,7 @@ PROJECT_ROOT = os.path.abspath(
     os.path.join(os.path.abspath(os.path.dirname(__file__)), os.pardir)
 )
 DATA_TRAIN_ROOT = os.path.join(PROJECT_ROOT, 'data/train')
+DATA_VAL_ROOT = os.path.join(PROJECT_ROOT, 'data/val')
 DATA_TEST_ROOT = os.path.join(PROJECT_ROOT, 'data/test')
 MODEL_ROOT = os.path.join(PROJECT_ROOT, 'data/model')
 RECORD_TRAIN_PATH = os.path.join(PROJECT_ROOT, 'data/train_record.txt')

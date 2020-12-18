@@ -11,8 +11,8 @@ from .validate import validate
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def train_model():
-    train_loader = get_loader('data/train_list.txt')
-    val_loader = get_loader('data/val_list.txt')
+    train_loader = get_loader('data/train_list.txt', config.DATA_TRAIN_ROOT)
+    val_loader = get_loader('data/val_list.txt', config.DATA_VAL_ROOT)
     net = Net().to(DEVICE)
     # 使用Adam优化器
     optimizer = torch.optim.Adam(net.parameters(), lr=0.001)
@@ -35,6 +35,7 @@ def train_model():
                     train_recorder(tuple(record), header=True)
                 else:
                     train_recorder(tuple(record))
+                print('Epoch: '+ epoch +'\tStep: '+ step + '\tLoss' + loss.item() +'\n' )
                 record = []
         # 验证集验证
         validate(net, val_loader, epoch)
