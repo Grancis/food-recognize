@@ -19,6 +19,6 @@ LABEL_VALUE = {
     1: 'Steven_Spielberg'
 }
 
-BATCH_SIZE = 1
-EPOCHS = 4
+BATCH_SIZE = 512
+EPOCHS = 3
 LR = 0.01

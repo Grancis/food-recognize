@@ -16,7 +16,7 @@ class DatasetCustom(data.Dataset):
     label: 一般为int, 无标签时为None
     '''
     def __init__(self, root:str, image_list:tuple, transform=None):
-        super().__init__()
+        # super().__init__()
         self.root = root
         self.image_list = image_list
         self.tranform = transform
@@ -24,11 +24,11 @@ class DatasetCustom(data.Dataset):
     def __getitem__(self, index):
         img_name, label = self.image_list[index]
         img_path = os.path.join(self.root, img_name)
-        img = Image.open(img_path)
+        img = Image.open(img_path).convert('RGB')
         if not self.tranform is None:
             img = self.tranform(img)
-        img = Variable(torch.unsqueeze(img, dim=0).float(), requires_grad=False)
-        return img, torch.tensor([label])
+        # img = Variable(torch.unsqueeze(img, dim=0).float(), requires_grad=False)
+        return tuple([img, label])
 
     def __len__(self):
-        return (len(self.image_list))
+        return len(self.image_list)

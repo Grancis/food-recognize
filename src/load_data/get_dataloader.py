@@ -5,7 +5,7 @@ from .image_list import get_image_list
 from .dataset_custom import DatasetCustom
 import os
 
-def get_loader(data_info_file: str, data_root:str, transform=None):
+def get_loader(data_info_file: str, data_root:str, transform=None, batch_size=16, shuffle=False, num_workers=1):
     '''
     @params
     data_info_file: 文本文件（.txt等）的相对路径
@@ -22,4 +22,6 @@ def get_loader(data_info_file: str, data_root:str, transform=None):
             transforms.Normalize(mean=[.4, .4, .4], std=[.2, .2, .2])
         ])
     dataset = DatasetCustom(os.path.join(config.PROJECT_ROOT, data_root), img_list, transform = transform)
-    return dataset
+    # print(dataset[0])
+    data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
+    return data_loader
